@@ -5,6 +5,7 @@
     "__ENV__": false,
     "__DEV__": false,
     "__PROD__": false,
+    "__APIURL__": false,
   },
   "rules": {
     "no-unused-expressions": 0,

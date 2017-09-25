@@ -21,6 +21,7 @@ if (__DEV__) {
 
 if (__PROD__) {
   server.use(compression())
+  server.use('/api', require('api'))
   server.use('/dist', express.static(DIST_FOLDER))
 }
 

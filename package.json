@@ -1,12 +1,15 @@
 {
   "scripts": {
-    "start": "node -r babel-register -r babel-polyfill src/server",
+    "start": "yarn serve & yarn api & wait",
+    "serve": "node -r babel-register -r babel-polyfill src/server",
+    "api": "nodemon -r babel-register src/server/dev-api.js",
     "lint": "eslint src webpack bin",
     "prettier": "prettier --write \"{src,webpack}/**/*.?(js|json)\"",
     "build": "rm -rf dist && NODE_ENV=production webpack --progress --hide-modules --config webpack/build.babel.js",
-    "prod": "NODE_ENV=production yarn start"
+    "prod": "NODE_ENV=production yarn serve"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "compression": "^1.7.2",
     "express": "^4.16.3",
     "history": "^4.7.2",
@@ -38,6 +41,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-zavatta": "^6.0.1",
     "eslint-config-zavatta-react": "^2.3.0",
+    "nodemon": "^1.17.2",
     "prettier": "^1.11.1",
     "react-hot-loader": "^4.0.0",
     "webpack": "^4.1.1",
