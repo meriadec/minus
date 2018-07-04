@@ -4,7 +4,7 @@ export default store => next => async action => {
   }
 
   const { dispatch } = store
-  const prefix = action.type.split(':')[1]
+  const suffix = action.type.split(':')[1]
 
   const { method = 'GET' } = action.payload
   let { url = '', body } = action.payload
@@ -21,12 +21,12 @@ export default store => next => async action => {
   }
 
   try {
-    dispatch({ type: `${prefix}_START` })
+    dispatch({ type: `${suffix}_START` })
     const payload = { method, headers, body }
     const data = await fetch(url, payload).then(d => d.json())
-    dispatch({ type: `${prefix}_SUCCESS`, payload: { data } })
+    dispatch({ type: `${suffix}_SUCCESS`, payload: { data } })
   } catch (err) {
-    dispatch({ type: `${prefix}_ERROR` })
+    dispatch({ type: `${suffix}_ERROR` })
     throw new Error(err)
   }
 }
